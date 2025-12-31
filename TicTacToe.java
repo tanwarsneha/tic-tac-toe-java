@@ -2,15 +2,11 @@ import java.util.Random;
 import java.util.Scanner;
 public class TicTacToe {
     public void printBoard(char board[][]){
-        // char box_number = 'a';
+        // printing the board 
         System.out.println();
         for(int i=0; i< board.length; i++){
             for(int j=0; j< board[i].length; j++){
-                // if(board[i][j] != 'X' && board[i][j] != 'O'){
-                //     board[i][j] = box_number;
-                // }
                 System.out.print( " " + board[i][j] + " |");
-                // box_number++;
             }
             System.out.println();
             System.out.println("-----------");
@@ -40,7 +36,9 @@ public class TicTacToe {
         }
         return false;
     }
+
     boolean isDraw(char board[][]){
+        // if every board is filled(X or O --> draw condition)
         for(int i=0; i<3; i++){
             for(int j=0; j<3; j++){
                 if(board[i][j] != 'X' && board[i][j] != 'O'){
@@ -57,17 +55,13 @@ public class TicTacToe {
         char board[][] = new char[3][3];
         TicTacToe obj = new TicTacToe();
         
-        // Creation of board
-         char box_number = 'a';
-         System.out.println();
+        // Creation and initialisation of board
+        char box_number = 'a';
+        System.out.println();
         for(int i=0; i< board.length; i++){
-             for(int j=0; j< board[i].length; j++){
-                 board[i][j] = box_number++;
-        //         System.out.print( " " + box_number + " |");
-        //         box_number++;
+            for(int j=0; j< board[i].length; j++){
+                board[i][j] = box_number++;
             }
-        //     System.out.println();
-        //     System.out.println("-----------");
         }
         obj.printBoard(board);
         char user_choice;
@@ -124,13 +118,9 @@ public class TicTacToe {
                     obj.printBoard(board);
                     placed = false;
                 }
-                
-             // to be removed after final . 
             }
             else{
                 // turn = 'C'
-                
-                // check if column is placed and if yes - then ask comp to reguess
                 System.out.println("Computer's Turn: ");
                 while(!placed){
                     col = (char)('a' + new Random().nextInt(9));
@@ -159,16 +149,6 @@ public class TicTacToe {
                     obj.printBoard(board);
                     placed = false;
                 }
-                
-                // for(int i=0; i<board.length; i++){
-                //     for(int j=0; j<board[i].length; j++){
-                //         if(board[i][j] == col){
-                //             board[i][j] = comp_choice;
-                //             turn = 'U';
-                //         }
-                //     }
-                // }
-                
             }
             if(gameOver){
                     break;
@@ -176,5 +156,4 @@ public class TicTacToe {
         }
         sc.close();
     }
-
 }
